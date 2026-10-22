@@ -37,3 +37,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           ./gradlew build test jacocoTestReport --stacktrace --no-configuration-cache -Pbuildserver
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-app-debug
+          path: app/build/outputs/apk/debug/*.apk
